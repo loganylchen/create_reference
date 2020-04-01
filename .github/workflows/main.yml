@@ -1,4 +1,4 @@
-name: CI
+nbdev_test_nbsname: CI
 on: [push, pull_request]
 jobs:
   build:

@@ -2,9 +2,27 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"get_args": "00_utils.ipynb",
+         "file_exists": "00_utils.ipynb",
+         "get_ffp": "00_utils.ipynb",
+         "get_gfp": "00_utils.ipynb",
+         "get_likely_file_from_ftp": "00_utils.ipynb",
+         "fasta_file_pattern": "01_defaults.ipynb",
+         "gtf_file_pattern": "01_defaults.ipynb",
+         "ensembl_ftp": "01_defaults.ipynb",
+         "species": "01_defaults.ipynb",
+         "softwares": "01_defaults.ipynb",
+         "defaults": "01_defaults.ipynb",
+         "softwares_default": "01_defaults.ipynb",
+         "task_get_file": "02_tasks.ipynb",
+         "task_star_build_index": "02_tasks.ipynb",
+         "cmd_wget": "03_commands.ipynb",
+         "cmd_gunzip": "03_commands.ipynb"}
 
-modules = []
+modules = ["utils.py",
+           "defaults.py",
+           "tasks.py",
+           "commands.py"]
 
 doc_url = "https://btrspg.github.io/create_reference/"
 

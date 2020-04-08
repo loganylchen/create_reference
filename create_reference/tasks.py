@@ -19,4 +19,5 @@ def task_get_file(link,outdir,species,version,filename):
 
 def task_star_build_index(software,reference,outdir,rl):
     star = Star(software,starDefault)
-    star.
+#     star.
+    return 1

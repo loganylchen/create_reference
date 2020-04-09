@@ -12,18 +12,4 @@ Details
 
 Fill me in please! Don't forget code examples:
 
-```python
-generate_reference -h
-```
-
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-1-1d9723e06046> in <module>
-    ----> 1 generate_reference -h
-    
-
-    NameError: name 'generate_reference' is not defined
-
+`fetchr -h`

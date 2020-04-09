@@ -28,7 +28,7 @@ def get_args():
                        help='Reference and indexes generated direction')
     ana_parser.add_argument('--thread','-t',default=4,type=int,
                        help='Thread number')
-    conf_parser.add_argument_group('Config parameters')
+    conf_parser=parser.add_argument_group('Config parameters')
     conf_parser.add_argument('--bwa',default='bwa',type=str,
                             help='bwa execute path')
     conf_parser.add_argument('--bowtie',default='bowtie',type=str,

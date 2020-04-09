@@ -24,7 +24,7 @@ def recipe(workflow,species_paras,args):
         workflow.add_task(
             func=task_gunzip,
             params=dict(
-                gzipfile=para['link_genome_fasta_gz']
+                gzipfile=para['local_genome_fasta_gz']
             ),
             uid='gunzip_fasta_%s_%s' % (para['species'],para['version']) ,
             parents=get_fasta[i],

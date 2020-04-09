@@ -88,6 +88,7 @@ def get_paras(args,ftp,ftp_server):
     for sp in args.species:
         para={}
         para['species']=sp
+        para['version']=args.reference_version
         para['link_genome_fasta']=get_likely_file_from_ftp(ftp,
                                                            ftp_server,
                                                            args.reference_version,

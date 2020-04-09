@@ -20,6 +20,17 @@ def recipe(workflow,species_paras,args):
             stage_name='get_fasta'
         ) for para in species_paras]
 
+    gunzip_fasta = [
+        workflow.add_task(
+            func=task_gunzip,
+            params=dict(
+                gzipfile=para['link_genome_fasta_gz']
+            ),
+            uid='gunzip_fasta_%s_%s' % (para['species'],para['version']) ,
+            parents=get_fasta[i],
+            stage_name='gunzip_fasta'
+        ) for i,para in enumerate(species_paras)]
+
     get_gtf = [
         workflow.add_task(
             func=task_get_file,
@@ -39,7 +50,7 @@ def recipe(workflow,species_paras,args):
                 reference=para['local_genome_fasta'],
             ),
             uid='get_bwa_index_%s_%s' % (para['species'],para['version']) ,
-            parents=get_fasta[i],
+            parents=gunzip_fasta[i],
             stage_name='get_bwa_index'
         ) for i,para in enumerate(species_paras)]
 
@@ -52,7 +63,7 @@ def recipe(workflow,species_paras,args):
                 prefix=para['bowtie_idx']
             ),
             uid='get_bowtie_index_%s_%s' % (para['species'],para['version']) ,
-            parents=get_fasta[i],
+            parents=gunzip_fasta[i],
             stage_name='get_bowtie_index'
         ) for i,para in enumerate(species_paras)]
 
@@ -65,7 +76,7 @@ def recipe(workflow,species_paras,args):
                 prefix=para['bowtie2_idx']
             ),
             uid='get_bowtie2_index_%s_%s' % (para['species'],para['version']) ,
-            parents=get_fasta[i],
+            parents=gunzip_fasta[i],
             stage_name='get_bowtie2_index'
         ) for i,para in enumerate(species_paras)]
 

@@ -11,13 +11,12 @@ from .utils import file_exists
 
 # Cell
 
-def task_get_file(link,outdir,species,version,filename):
+def task_get_file(link,filename):
     if file_exists(filename):
         return 'echo {filename} exists'.format(filename=filename)
     else:
         return cmd_wget(link,filename)
 
-def task_star_build_index(software,reference,outdir,rl):
+def task_star_build_index(software,reference,gtf,outdir,rl):
     star = Star(software,starDefault)
-#     star.
-    return 1
+    return star.cmd_build_index(outdir, reference, gtf, rl)

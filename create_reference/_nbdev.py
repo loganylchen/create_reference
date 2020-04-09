@@ -7,6 +7,8 @@ index = {"get_args": "00_utils.ipynb",
          "get_ffp": "00_utils.ipynb",
          "get_gfp": "00_utils.ipynb",
          "get_likely_file_from_ftp": "00_utils.ipynb",
+         "get_local_files": "00_utils.ipynb",
+         "get_paras": "00_utils.ipynb",
          "fasta_file_pattern": "01_defaults.ipynb",
          "gtf_file_pattern": "01_defaults.ipynb",
          "ensembl_ftp": "01_defaults.ipynb",
@@ -17,12 +19,16 @@ index = {"get_args": "00_utils.ipynb",
          "task_get_file": "02_tasks.ipynb",
          "task_star_build_index": "02_tasks.ipynb",
          "cmd_wget": "03_commands.ipynb",
-         "cmd_gunzip": "03_commands.ipynb"}
+         "cmd_gunzip": "03_commands.ipynb",
+         "simple_reference": "04_pipelines.ipynb",
+         "recipe": "05_recipes.ipynb"}
 
 modules = ["utils.py",
            "defaults.py",
            "tasks.py",
-           "commands.py"]
+           "commands.py",
+           "pipelines.py",
+           "recipes.py"]
 
 doc_url = "https://btrspg.github.io/create_reference/"
 

@@ -19,6 +19,7 @@ def simple_reference():
         ftp.login()
         paras = get_paras(args,ftp,defaults.ensembl_ftp)
 
+
     cosmos=Cosmos('sqlite:///{outdir}/sqlite.db'.format(outdir=args.outdir),
                   default_max_attempts=2)
     cosmos.initdb()
@@ -30,7 +31,7 @@ def simple_reference():
     workflow = cosmos.start(workflow_name,
                             skip_confirm=True,
                             primary_log_path='{outdir}/log/workflow.log'.format(outdir=args.outdir))
-    recipe(workflow,paras)
+    recipe(workflow,paras,args)
     workflow.make_output_dirs()
     workflow.run(max_cores=args.thread, log_out_dir_func=change_log_dir)
     sys.exit(0 if workflow.successful else 1)

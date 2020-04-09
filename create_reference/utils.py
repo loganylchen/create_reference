@@ -16,18 +16,25 @@ def get_args():
                                      description='Fetch and Generate references for bioinformatics analysis',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter
                                     )
-
-    parser.add_argument('--species',nargs='+',choices=defaults.species,default=['homo_sapiens','mus_musculus'],
+    ana_parser = parser.add_argument_group('Analysis parameters')
+    ana_parser.add_argument('--species',nargs='+',choices=defaults.species,default=['homo_sapiens','mus_musculus'],
                        help='Reference or references from which species')
-    parser.add_argument('--indexs',nargs='+',choices=defaults.softwares,default='samtools',
+    ana_parser.add_argument('--indexs',nargs='+',choices=defaults.softwares,default='samtools',
                        help='Using which software(s) to create indexes')
-    parser.add_argument('--reference-version','-rv',default=99,type=int,
+    ana_parser.add_argument('--reference-version','-rv',default=99,type=int,
                        help='For homo_spaiens, version=75 is the last version of Grch37 reference, \
                        you can check the version in ftp://ftp.ensembl.org/pub/')
-    parser.add_argument('--outdir','-o',default='./',
+    ana_parser.add_argument('--outdir','-o',default='./',
                        help='Reference and indexes generated direction')
-    parser.add_argument('--thread','-t',default=4,type=int,
+    ana_parser.add_argument('--thread','-t',default=4,type=int,
                        help='Thread number')
+    conf_parser.add_argument_group('Config parameters')
+    conf_parser.add_argument('--bwa',default='bwa',type=str,
+                            help='bwa execute path')
+    conf_parser.add_argument('--bowtie',default='bowtie',type=str,
+                            help='bowtie execute path')
+    conf_parser.add_argument('--bowtie2',default='bowtie2',type=str,
+                            help='bowtie2 execute path')
     return parser.parse_args()
 
 
@@ -76,10 +83,13 @@ def get_likely_file_from_ftp(ftp,ftp_server,version,species,ftype,dtype,pattern)
 
 def get_local_files(outdir,species,version):
     sample_outdir='{outdir}/{species}/{version}'.format(outdir=outdir,species=species,version=version)
-    local_genome_fasta='{sample_outdir}/genome.fa.gz'.format(sample_outdir=sample_outdir)
-    local_transcriptome_gtf = '{sample_outdir}/transcriptome.gtf.gz'.format(sample_outdir=sample_outdir)
+    local_genome_fasta='{sample_outdir}/genome.fa'.format(sample_outdir=sample_outdir)
+    local_transcriptome_gtf = '{sample_outdir}/transcriptome.gtf'.format(sample_outdir=sample_outdir)
+    bwa_idx = local_genome_fasta,
+    bowtie_idx = '{sample_outdir}/bowtie_idx/genome'.format(sample_outdir=sample_outdir)
+    bowtie2_idx = '{sample_outdir}/bowtie2_idx/genome'.format(sample_outdir=sample_outdir)
     os.makedirs(sample_outdir,exist_ok=True)
-    return local_genome_fasta,local_transcriptome_gtf
+    return local_genome_fasta,local_transcriptome_gtf, bwa_idx,bowtie_idx,bowtie2_idx
 
 # Cell
 
@@ -103,9 +113,12 @@ def get_paras(args,ftp,ftp_server):
                                                                 None,
                                                                 get_gfp(sp,
                                                                         args.reference_version))
-        para['local_genome_fasta'],para['local_transcriptome_gtf'] = get_local_files(args.outdir,
-                                                                                     sp,
-                                                                                     args.reference_version)
+        para['local_genome_fasta'],para['local_transcriptome_gtf'],para['bwa_idx'],para['bowtie_idx'],para['bowtie2_idx']= get_local_files(
+            args.outdir,
+            sp,
+            args.reference_version)
+        para['local_genome_fasta_gz'] = para['local_genome_fasta']+'.gz'
+        para['local_transcriptome_gtf_gz'] = para['local_transcriptome_gtf'] + '.gz'
         paras.append(para)
 
     return paras

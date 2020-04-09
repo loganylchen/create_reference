@@ -17,9 +17,12 @@ index = {"get_args": "00_utils.ipynb",
          "defaults": "01_defaults.ipynb",
          "softwares_default": "01_defaults.ipynb",
          "task_get_file": "02_tasks.ipynb",
-         "task_star_build_index": "02_tasks.ipynb",
+         "task_bwa_build_index": "02_tasks.ipynb",
+         "task_bowtie_build_index": "02_tasks.ipynb",
+         "task_bowtie2_build_index": "02_tasks.ipynb",
          "cmd_wget": "03_commands.ipynb",
          "cmd_gunzip": "03_commands.ipynb",
+         "cmd_mkdir": "03_commands.ipynb",
          "simple_reference": "04_pipelines.ipynb",
          "recipe": "05_recipes.ipynb"}
 

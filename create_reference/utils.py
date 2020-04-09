@@ -26,7 +26,7 @@ def get_args():
                        you can check the version in ftp://ftp.ensembl.org/pub/')
     parser.add_argument('--outdir','-o',default='./',
                        help='Reference and indexes generated direction')
-    parser.add_argument('--thread','-t',default=4,
+    parser.add_argument('--thread','-t',default=4,type=int,
                        help='Thread number')
     return parser.parse_args()
 

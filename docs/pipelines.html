@@ -45,6 +45,229 @@ description: "summary"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="simple_reference" class="doc_header"><code>simple_reference</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/pipelines.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>simple_reference</code>()</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">simple_reference</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>INFO: 2020-04-09 12:31:05: Resuming &lt;Workflow[1] fetchr_reference&gt;
+INFO: 2020-04-09 12:31:05: Deleting 4 unsuccessful task(s) from SQL database, delete_files=False
+INFO: 2020-04-09 12:31:05: Committing SQL session...
+INFO: 2020-04-09 12:31:05: Execution Command: /Users/logan/.conda/envs/nbdev-cd/lib/python3.7/site-packages/ipykernel_launcher.py -f /Users/logan/Library/Jupyter/runtime/kernel-74a4e765-c44b-4929-90c1-759c8ecb2d9a.json
+INFO: 2020-04-09 12:31:05: Preparing to run &lt;Workflow[1] fetchr_reference&gt; using DRM `local`, cwd is `/Users/logan/PycharmProjects/create_reference`
+INFO: 2020-04-09 12:31:05: Running as logan@BTRspg, pid 28477
+INFO: 2020-04-09 12:31:05: &lt;Stage[1] get_fasta&gt; Has not been attempted
+INFO: 2020-04-09 12:31:05: &lt;Stage[2] get_gtf&gt; Has not been attempted
+INFO: 2020-04-09 12:31:05: Skipping 0 successful tasks...
+INFO: 2020-04-09 12:31:05: Ensuring there are enough cores...
+INFO: 2020-04-09 12:31:05: Committing to SQL db...
+INFO: 2020-04-09 12:31:05: Executing TaskGraph
+INFO: 2020-04-09 12:31:05: &lt;Stage[1] get_fasta&gt; Running (0/2 Tasks were successful)
+INFO: 2020-04-09 12:31:05: &lt;Task[1] get_fasta(uid=&#39;get_fasta_homo_sapiens&#39;)&gt; Submitted to the job manager. drm=&#39;local&#39;; drm_jobid=&#39;28490&#39;; job_class=None; queue=None
+INFO: 2020-04-09 12:31:05: &lt;Task[2] get_fasta(uid=&#39;get_fasta_mus_musculus&#39;)&gt; Submitted to the job manager. drm=&#39;local&#39;; drm_jobid=&#39;28493&#39;; job_class=None; queue=None
+INFO: 2020-04-09 12:31:05: &lt;Stage[2] get_gtf&gt; Running (0/2 Tasks were successful)
+INFO: 2020-04-09 12:31:05: &lt;Task[3] get_gtf(uid=&#39;get_gtf_homo_sapiens&#39;)&gt; Submitted to the job manager. drm=&#39;local&#39;; drm_jobid=&#39;28496&#39;; job_class=None; queue=None
+INFO: 2020-04-09 12:31:05: &lt;Task[4] get_gtf(uid=&#39;get_gtf_mus_musculus&#39;)&gt; Submitted to the job manager. drm=&#39;local&#39;; drm_jobid=&#39;28499&#39;; job_class=None; queue=None
+WARNING: 2020-04-09 12:31:05: &lt;Task[1] get_fasta(uid=&#39;get_fasta_homo_sapiens&#39;)&gt; attempt #1 failed (max_attempts=1)
+WARNING: 2020-04-09 12:31:05: Task Info:
+&lt;EXIT_STATUS=&#34;127&#34;&gt;
+&lt;COMMAND path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_homo_sapiens/command_attempt1.bash&#34; drm_jobID=&#34;28490&#34;&gt;
+&lt;PARAMS&gt;
+{ &#39;filename&#39;: &#39;{sample_outdir}/genome.fa.gz&#39;,
+  &#39;link&#39;: &#39;ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.toplevel.fa.gz&#39;}
+&lt;/PARAMS&gt;
+#!/bin/bash
+set -e
+set -o pipefail
+trap : USR1 USR2 XCPU
+echo &#34;This task is running as pid $$ on ${HOSTNAME}&#34; &gt;&amp;2
+echo &#34;CWD is `pwd`&#34; &gt;&amp;2
+
+wget -c ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.toplevel.fa.gz -O {sample_outdir}/genome.fa.gz
+&lt;/COMMAND&gt;
+&lt;STDOUT path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_homo_sapiens/stdout_attempt1.txt&#34;&gt;
+
+&lt;/STDOUT&gt;
+&lt;STDERR path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_homo_sapiens/stderr_attempt1.txt&#34;&gt;
+This task is running as pid 28490 on BTRspg
+CWD is /Users/logan/PycharmProjects/create_reference
+/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_homo_sapiens/command_attempt1.bash: line 8: wget: command not found
+
+&lt;/STDERR&gt;
+ERROR: 2020-04-09 12:31:05: &lt;Task[1] get_fasta(uid=&#39;get_fasta_homo_sapiens&#39;)&gt; has failed too many times
+INFO: 2020-04-09 12:31:05: &lt;Stage[1] get_fasta&gt; Running, but a task failed (0/2 Tasks were successful)
+INFO: 2020-04-09 12:31:05: 3 tasks left in the queue
+WARNING: 2020-04-09 12:31:05: &lt;Task[2] get_fasta(uid=&#39;get_fasta_mus_musculus&#39;)&gt; attempt #1 failed (max_attempts=1)
+WARNING: 2020-04-09 12:31:05: Task Info:
+&lt;EXIT_STATUS=&#34;127&#34;&gt;
+&lt;COMMAND path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_mus_musculus/command_attempt1.bash&#34; drm_jobID=&#34;28493&#34;&gt;
+&lt;PARAMS&gt;
+{ &#39;filename&#39;: &#39;{sample_outdir}/genome.fa.gz&#39;,
+  &#39;link&#39;: &#39;ftp://ftp.ensembl.org/pub/release-99/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.toplevel.fa.gz&#39;}
+&lt;/PARAMS&gt;
+#!/bin/bash
+set -e
+set -o pipefail
+trap : USR1 USR2 XCPU
+echo &#34;This task is running as pid $$ on ${HOSTNAME}&#34; &gt;&amp;2
+echo &#34;CWD is `pwd`&#34; &gt;&amp;2
+
+wget -c ftp://ftp.ensembl.org/pub/release-99/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.toplevel.fa.gz -O {sample_outdir}/genome.fa.gz
+&lt;/COMMAND&gt;
+&lt;STDOUT path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_mus_musculus/stdout_attempt1.txt&#34;&gt;
+
+&lt;/STDOUT&gt;
+&lt;STDERR path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_mus_musculus/stderr_attempt1.txt&#34;&gt;
+This task is running as pid 28493 on BTRspg
+CWD is /Users/logan/PycharmProjects/create_reference
+/Users/logan/PycharmProjects/create_reference/log/get_fasta/get_fasta_mus_musculus/command_attempt1.bash: line 8: wget: command not found
+
+&lt;/STDERR&gt;
+ERROR: 2020-04-09 12:31:05: &lt;Task[2] get_fasta(uid=&#39;get_fasta_mus_musculus&#39;)&gt; has failed too many times
+INFO: 2020-04-09 12:31:05: 2 tasks left in the queue
+WARNING: 2020-04-09 12:31:05: &lt;Task[3] get_gtf(uid=&#39;get_gtf_homo_sapiens&#39;)&gt; attempt #1 failed (max_attempts=1)
+WARNING: 2020-04-09 12:31:05: Task Info:
+&lt;EXIT_STATUS=&#34;127&#34;&gt;
+&lt;COMMAND path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_homo_sapiens/command_attempt1.bash&#34; drm_jobID=&#34;28496&#34;&gt;
+&lt;PARAMS&gt;
+{ &#39;filename&#39;: &#39;.//homo_sapiens/99/transcriptome.gtf.gz&#39;,
+  &#39;link&#39;: &#39;ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz&#39;}
+&lt;/PARAMS&gt;
+#!/bin/bash
+set -e
+set -o pipefail
+trap : USR1 USR2 XCPU
+echo &#34;This task is running as pid $$ on ${HOSTNAME}&#34; &gt;&amp;2
+echo &#34;CWD is `pwd`&#34; &gt;&amp;2
+
+wget -c ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz -O .//homo_sapiens/99/transcriptome.gtf.gz
+&lt;/COMMAND&gt;
+&lt;STDOUT path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_homo_sapiens/stdout_attempt1.txt&#34;&gt;
+
+&lt;/STDOUT&gt;
+&lt;STDERR path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_homo_sapiens/stderr_attempt1.txt&#34;&gt;
+This task is running as pid 28496 on BTRspg
+CWD is /Users/logan/PycharmProjects/create_reference
+/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_homo_sapiens/command_attempt1.bash: line 8: wget: command not found
+
+&lt;/STDERR&gt;
+ERROR: 2020-04-09 12:31:05: &lt;Task[3] get_gtf(uid=&#39;get_gtf_homo_sapiens&#39;)&gt; has failed too many times
+INFO: 2020-04-09 12:31:05: &lt;Stage[2] get_gtf&gt; Running, but a task failed (0/2 Tasks were successful)
+INFO: 2020-04-09 12:31:05: 1 tasks left in the queue
+WARNING: 2020-04-09 12:31:05: &lt;Task[4] get_gtf(uid=&#39;get_gtf_mus_musculus&#39;)&gt; attempt #1 failed (max_attempts=1)
+WARNING: 2020-04-09 12:31:05: Task Info:
+&lt;EXIT_STATUS=&#34;127&#34;&gt;
+&lt;COMMAND path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_mus_musculus/command_attempt1.bash&#34; drm_jobID=&#34;28499&#34;&gt;
+&lt;PARAMS&gt;
+{ &#39;filename&#39;: &#39;.//mus_musculus/99/transcriptome.gtf.gz&#39;,
+  &#39;link&#39;: &#39;ftp://ftp.ensembl.org/pub/release-99/gtf/mus_musculus/Mus_musculus.GRCm38.99.gtf.gz&#39;}
+&lt;/PARAMS&gt;
+#!/bin/bash
+set -e
+set -o pipefail
+trap : USR1 USR2 XCPU
+echo &#34;This task is running as pid $$ on ${HOSTNAME}&#34; &gt;&amp;2
+echo &#34;CWD is `pwd`&#34; &gt;&amp;2
+
+wget -c ftp://ftp.ensembl.org/pub/release-99/gtf/mus_musculus/Mus_musculus.GRCm38.99.gtf.gz -O .//mus_musculus/99/transcriptome.gtf.gz
+&lt;/COMMAND&gt;
+&lt;STDOUT path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_mus_musculus/stdout_attempt1.txt&#34;&gt;
+
+&lt;/STDOUT&gt;
+&lt;STDERR path=&#34;/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_mus_musculus/stderr_attempt1.txt&#34;&gt;
+This task is running as pid 28499 on BTRspg
+CWD is /Users/logan/PycharmProjects/create_reference
+/Users/logan/PycharmProjects/create_reference/log/get_gtf/get_gtf_mus_musculus/command_attempt1.bash: line 8: wget: command not found
+
+&lt;/STDERR&gt;
+ERROR: 2020-04-09 12:31:05: &lt;Task[4] get_gtf(uid=&#39;get_gtf_mus_musculus&#39;)&gt; has failed too many times
+INFO: 2020-04-09 12:31:05: 0 tasks left in the queue
+WARNING: 2020-04-09 12:31:05: &lt;Workflow[1] fetchr_reference&gt; Failed, but finished (0/4 Tasks completed) in 0:02:16.642773
+INFO: 2020-04-09 12:31:05: &lt;Stage[1] get_fasta&gt; Finished, but failed (0/2 Tasks were successful)
+INFO: 2020-04-09 12:31:05: &lt;Stage[2] get_gtf&gt; Finished, but failed (0/2 Tasks were successful)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+An exception has occurred, use %tb to see the full traceback.
+
+<span class="ansi-red-fg">SystemExit</span><span class="ansi-red-fg">:</span> 1
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/logan/.conda/envs/nbdev-cd/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3339: UserWarning: To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.
+  warn(&#34;To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.&#34;, stacklevel=1)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 

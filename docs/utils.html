@@ -70,7 +70,7 @@ description: "API details."
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_args" class="doc_header"><code>get_args</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_args</code>(<strong>*<code>args</code></strong>)</p>
+<h4 id="get_args" class="doc_header"><code>get_args</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_args</code>()</p>
 </blockquote>
 
 </div>
@@ -90,70 +90,10 @@ description: "API details."
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">args</span><span class="o">=</span><span class="n">get_args</span><span class="p">(</span><span class="s1">&#39;-h&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># args=get_args(&#39;-h&#39;)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: fetchr [-h]
-              [--species {homo_sapiens,mus_musculus,rattus_norvegicus,caenorhabditis_elegans,equus_caballus,capra_hircus,drosophila_melanogaster,macaca_mulatta,ovis_aries,sus_scrofa,oryctolagus_cuniculus,bos_taurus,saccharomyces_cerevisiae,gallus_gallus,gasterosteus_aculeatus,danio_rerio,oryzias_latipes,anser_cygnoides,callithrix_jacchus,pan_troglodytes,pongo_abelii,meleagris_gallopavo,oreochromis_niloticus,bos_grunniens,phascolarctos_cinereus,salmo_salar,amphilophus_citrinellus,ciona_intestinalis,monodelphis_domestica,mesocricetus_auratus,scophthalmus_maximus,felis_catus,microcebus_murinus,cynoglossus_semilaevis,anolis_carolinensis,ailuropoda_melanoleuca,melopsittacus_undulatus,clupea_harengus,neolamprologus_brichardi,maylandia_zebra,haplochromis_burtoni,pundamilia_nyererei,larimichthys_crocea,chlorocebus_sabaeus} [{homo_sapiens,mus_musculus,rattus_norvegicus,caenorhabditis_elegans,equus_caballus,capra_hircus,drosophila_melanogaster,macaca_mulatta,ovis_aries,sus_scrofa,oryctolagus_cuniculus,bos_taurus,saccharomyces_cerevisiae,gallus_gallus,gasterosteus_aculeatus,danio_rerio,oryzias_latipes,anser_cygnoides,callithrix_jacchus,pan_troglodytes,pongo_abelii,meleagris_gallopavo,oreochromis_niloticus,bos_grunniens,phascolarctos_cinereus,salmo_salar,amphilophus_citrinellus,ciona_intestinalis,monodelphis_domestica,mesocricetus_auratus,scophthalmus_maximus,felis_catus,microcebus_murinus,cynoglossus_semilaevis,anolis_carolinensis,ailuropoda_melanoleuca,melopsittacus_undulatus,clupea_harengus,neolamprologus_brichardi,maylandia_zebra,haplochromis_burtoni,pundamilia_nyererei,larimichthys_crocea,chlorocebus_sabaeus} ...]]
-              [--indexs {bwa,hisat2,samtools,star,picard} [{bwa,hisat2,samtools,star,picard} ...]]
-              [--reference-version REFERENCE_VERSION] [--outdir OUTDIR]
-              [--workflow WORKFLOW] [--thread THREAD]
-
-Fetch and Generate references for bioinformatics analysis
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --species {homo_sapiens,mus_musculus,rattus_norvegicus,caenorhabditis_elegans,equus_caballus,capra_hircus,drosophila_melanogaster,macaca_mulatta,ovis_aries,sus_scrofa,oryctolagus_cuniculus,bos_taurus,saccharomyces_cerevisiae,gallus_gallus,gasterosteus_aculeatus,danio_rerio,oryzias_latipes,anser_cygnoides,callithrix_jacchus,pan_troglodytes,pongo_abelii,meleagris_gallopavo,oreochromis_niloticus,bos_grunniens,phascolarctos_cinereus,salmo_salar,amphilophus_citrinellus,ciona_intestinalis,monodelphis_domestica,mesocricetus_auratus,scophthalmus_maximus,felis_catus,microcebus_murinus,cynoglossus_semilaevis,anolis_carolinensis,ailuropoda_melanoleuca,melopsittacus_undulatus,clupea_harengus,neolamprologus_brichardi,maylandia_zebra,haplochromis_burtoni,pundamilia_nyererei,larimichthys_crocea,chlorocebus_sabaeus} [{homo_sapiens,mus_musculus,rattus_norvegicus,caenorhabditis_elegans,equus_caballus,capra_hircus,drosophila_melanogaster,macaca_mulatta,ovis_aries,sus_scrofa,oryctolagus_cuniculus,bos_taurus,saccharomyces_cerevisiae,gallus_gallus,gasterosteus_aculeatus,danio_rerio,oryzias_latipes,anser_cygnoides,callithrix_jacchus,pan_troglodytes,pongo_abelii,meleagris_gallopavo,oreochromis_niloticus,bos_grunniens,phascolarctos_cinereus,salmo_salar,amphilophus_citrinellus,ciona_intestinalis,monodelphis_domestica,mesocricetus_auratus,scophthalmus_maximus,felis_catus,microcebus_murinus,cynoglossus_semilaevis,anolis_carolinensis,ailuropoda_melanoleuca,melopsittacus_undulatus,clupea_harengus,neolamprologus_brichardi,maylandia_zebra,haplochromis_burtoni,pundamilia_nyererei,larimichthys_crocea,chlorocebus_sabaeus} ...]
-                        Reference or references from which species (default:
-                        homo_spaiens)
-  --indexs {bwa,hisat2,samtools,star,picard} [{bwa,hisat2,samtools,star,picard} ...]
-                        Using which software(s) to create indexes (default:
-                        samtools)
-  --reference-version REFERENCE_VERSION, -rv REFERENCE_VERSION
-                        For homo_spaiens, version=75 is the last version of
-                        Grch37 reference, you can check the version in
-                        ftp://ftp.ensembl.org/pub/ (default: 99)
-  --outdir OUTDIR, -o OUTDIR
-                        Reference and indexes generated direction (default:
-                        ./)
-  --workflow WORKFLOW, -w WORKFLOW
-                        Workflow path (default: sqlite:////sqlite.db)
-  --thread THREAD, -t THREAD
-                        Thread number (default: 4)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-An exception has occurred, use %tb to see the full traceback.
-
-<span class="ansi-red-fg">SystemExit</span><span class="ansi-red-fg">:</span> 0
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/logan/.conda/envs/nbdev-cd/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3339: UserWarning: To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.
-  warn(&#34;To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.&#34;, stacklevel=1)
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -178,7 +118,7 @@ An exception has occurred, use %tb to see the full traceback.
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="file_exists" class="doc_header"><code>file_exists</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>file_exists</code>(<strong><code>f</code></strong>)</p>
+<h4 id="file_exists" class="doc_header"><code>file_exists</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L36" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>file_exists</code>(<strong><code>f</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -242,7 +182,7 @@ An exception has occurred, use %tb to see the full traceback.
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_ffp" class="doc_header"><code>get_ffp</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L43" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_ffp</code>(<strong><code>species</code></strong>)</p>
+<h4 id="get_ffp" class="doc_header"><code>get_ffp</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L41" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_ffp</code>(<strong><code>species</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -266,7 +206,7 @@ An exception has occurred, use %tb to see the full traceback.
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_gfp" class="doc_header"><code>get_gfp</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L46" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_gfp</code>(<strong><code>species</code></strong>)</p>
+<h4 id="get_gfp" class="doc_header"><code>get_gfp</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L44" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_gfp</code>(<strong><code>species</code></strong>, <strong><code>version</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -297,7 +237,7 @@ An exception has occurred, use %tb to see the full traceback.
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_likely_file_from_ftp" class="doc_header"><code>get_likely_file_from_ftp</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L51" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_likely_file_from_ftp</code>(<strong><code>ftp</code></strong>, <strong><code>version</code></strong>, <strong><code>species</code></strong>, <strong><code>ftype</code></strong>, <strong><code>dtype</code></strong>, <strong><code>pattern</code></strong>)</p>
+<h4 id="get_likely_file_from_ftp" class="doc_header"><code>get_likely_file_from_ftp</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L49" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_likely_file_from_ftp</code>(<strong><code>ftp</code></strong>, <strong><code>ftp_server</code></strong>, <strong><code>version</code></strong>, <strong><code>species</code></strong>, <strong><code>ftype</code></strong>, <strong><code>dtype</code></strong>, <strong><code>pattern</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -317,13 +257,13 @@ An exception has occurred, use %tb to see the full traceback.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">ftplib</span><span class="o">.</span><span class="n">FTP</span><span class="p">(</span><span class="n">defaults</span><span class="o">.</span><span class="n">ensembl_ftp</span><span class="p">)</span> <span class="k">as</span> <span class="n">ftp</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">get_gfp</span><span class="p">(</span><span class="s1">&#39;homo_sapiens&#39;</span><span class="p">,</span><span class="mi">99</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">ftplib</span><span class="o">.</span><span class="n">FTP</span><span class="p">(</span><span class="n">defaults</span><span class="o">.</span><span class="n">ensembl_ftp</span><span class="p">)</span> <span class="k">as</span> <span class="n">ftp</span><span class="p">:</span>
     <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">species</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">defaults</span><span class="o">.</span><span class="n">species</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">get_likely_file_from_ftp</span><span class="p">(</span><span class="n">ftp</span><span class="p">,</span><span class="s1">&#39;99&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;fasta&#39;</span><span class="p">,</span><span class="s1">&#39;dna&#39;</span><span class="p">,</span><span class="n">get_ffp</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">get_likely_file_from_ftp</span><span class="p">(</span><span class="n">ftp</span><span class="p">,</span><span class="s1">&#39;99&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;gtf&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">get_gfp</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
-    
+        <span class="nb">print</span><span class="p">(</span><span class="n">get_likely_file_from_ftp</span><span class="p">(</span><span class="n">ftp</span><span class="p">,</span><span class="n">defaults</span><span class="o">.</span><span class="n">ensembl_ftp</span><span class="p">,</span><span class="s1">&#39;99&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;fasta&#39;</span><span class="p">,</span><span class="s1">&#39;dna&#39;</span><span class="p">,</span><span class="n">get_ffp</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">get_likely_file_from_ftp</span><span class="p">(</span><span class="n">ftp</span><span class="p">,</span><span class="n">defaults</span><span class="o">.</span><span class="n">ensembl_ftp</span><span class="p">,</span><span class="s1">&#39;99&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;gtf&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">get_gfp</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">99</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -336,11 +276,117 @@ An exception has occurred, use %tb to see the full traceback.
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>homo_sapiens
+<pre>re.compile(&#39;homo_sapiens.+?99.gtf.gz&#39;, re.IGNORECASE)
+anser_cygnoides
+ftp://ftp.ensembl.org/pub/release-99/fasta/anser_cygnoides/dna/Anser_cygnoides.GooseV1.0.dna.toplevel.fa.gz
+ftp://ftp.ensembl.org/pub/release-99/gtf/anser_cygnoides/Anser_cygnoides.GooseV1.0.99.gtf.gz
+pongo_abelii
+ftp://ftp.ensembl.org/pub/release-99/fasta/pongo_abelii/dna/Pongo_abelii.PPYG2.dna.toplevel.fa.gz
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_local_files" class="doc_header"><code>get_local_files</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L77" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_local_files</code>(<strong><code>outdir</code></strong>, <strong><code>species</code></strong>, <strong><code>version</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_paras" class="doc_header"><code>get_paras</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/utils.py#L86" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_paras</code>(<strong><code>args</code></strong>, <strong><code>ftp</code></strong>, <strong><code>ftp_server</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">args</span><span class="o">=</span><span class="n">get_args</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">ftplib</span><span class="o">.</span><span class="n">FTP</span><span class="p">(</span><span class="n">defaults</span><span class="o">.</span><span class="n">ensembl_ftp</span><span class="p">)</span> <span class="k">as</span> <span class="n">ftp</span><span class="p">:</span>
+    <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+<span class="c1">#     ftp.cwd(&#39;/pub/release-99/fasta/homo_sapiens&#39;)</span>
+<span class="c1">#     print(ftp.nlst())</span>
+<span class="c1">#     ftp.cwd(&#39;/pub/release-99/fasta/homo_spaiens/dna/&#39;)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">get_paras</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">ftp</span><span class="p">,</span><span class="n">defaults</span><span class="o">.</span><span class="n">ensembl_ftp</span><span class="p">))</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 

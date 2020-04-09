@@ -70,7 +70,7 @@ description: "summary"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="task_get_file" class="doc_header"><code>task_get_file</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/tasks.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>task_get_file</code>(<strong><code>link</code></strong>, <strong><code>outdir</code></strong>, <strong><code>species</code></strong>, <strong><code>version</code></strong>, <strong><code>filename</code></strong>)</p>
+<h4 id="task_get_file" class="doc_header"><code>task_get_file</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/tasks.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>task_get_file</code>(<strong><code>link</code></strong>, <strong><code>filename</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -94,7 +94,7 @@ description: "summary"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="task_star_build_index" class="doc_header"><code>task_star_build_index</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/tasks.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>task_star_build_index</code>(<strong><code>software</code></strong>, <strong><code>reference</code></strong>, <strong><code>outdir</code></strong>, <strong><code>rl</code></strong>)</p>
+<h4 id="task_star_build_index" class="doc_header"><code>task_star_build_index</code><a href="https://github.com/btrspg/create_reference/tree/master/create_reference/tasks.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>task_star_build_index</code>(<strong><code>software</code></strong>, <strong><code>reference</code></strong>, <strong><code>gtf</code></strong>, <strong><code>outdir</code></strong>, <strong><code>rl</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -114,11 +114,29 @@ description: "summary"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># star = Star(&#39;STAR&#39;,starDefault)</span>
-<span class="c1"># star.cmd_build_index( star_index_dir, reference, gtf, read_length)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">task_star_build_index</span><span class="p">(</span><span class="s1">&#39;STAR&#39;</span><span class="p">,</span><span class="s1">&#39;genome.fasta&#39;</span><span class="p">,</span><span class="s1">&#39;genome.gtf&#39;</span><span class="p">,</span><span class="s1">&#39;/tmp&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>STAR --runThreadN 8 \
+         --runMode genomeGenerate  \
+        --genomeDir /tmp \
+        --genomeFastaFiles genome.fasta \
+        --sjdbGTFfile genome.gtf \
+        --sjdbOverhang 1
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -141,22 +159,6 @@ description: "summary"
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;wget -c ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz -O genome.fasta.gz&#39;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 

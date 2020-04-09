@@ -19,7 +19,8 @@ def simple_reference():
         ftp.login()
         paras = get_paras(args,ftp,defaults.ensembl_ftp)
 
-    cosmos=Cosmos('sqlite:///{outdir}/sqlite.db'.format(outdir=args.outdir))
+    cosmos=Cosmos('sqlite:///{outdir}/sqlite.db'.format(outdir=args.outdir),
+                  default_max_attempts=2)
     cosmos.initdb()
 
     workflow_name='fetchr_reference'

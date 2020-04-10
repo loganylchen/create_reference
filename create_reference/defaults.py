@@ -5,7 +5,7 @@ __all__ = ['fasta_file_pattern', 'gtf_file_pattern', 'ensembl_ftp', 'species', '
 
 # Cell
 
-fasta_file_pattern='{species}.+?dna.toplevel.fa.gz'
+fasta_file_pattern='{species}.+?dna\..+?.fa.gz'
 gtf_file_pattern='{species}.+?{version}.gtf.gz'
 
 

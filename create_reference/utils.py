@@ -54,6 +54,9 @@ def get_gfp(species,version):
 # Cell
 
 def get_likely_file_from_ftp(ftp,ftp_server,version,species,ftype,dtype,pattern):
+    second_p = ''
+    first_p = ''
+    gtf_f = ''
     if ftype == 'fasta':
         direction='/pub/release-{version}/{ftype}/{species}/{dtype}/'.format(
             version=version,
@@ -72,11 +75,25 @@ def get_likely_file_from_ftp(ftp,ftp_server,version,species,ftype,dtype,pattern)
         for f in files:
 #                 print(f)
             if len(pattern.findall(f))>0:
-                return 'ftp://'+ftp_server+direction+f
-        raise ValueError('No fit ' + ftype +' file in ftp://'+ftp_server+direction)
+                if '.toplevel.' in f:
+                    second_p = f
+                if '.primary_assembly.' in f:
+                    first_p = f
+                if '.gtf.gz' in f:
+                    gtf_f = f
+
     except ftplib.all_errors as e:
         print(e)
         sys.exit(1)
+
+    if first_p != '':
+        return 'ftp://'+ftp_server+direction+first_p
+    elif second_p != '':
+        return 'ftp://'+ftp_server+direction+second_p
+    elif gtf_f != '':
+        return 'ftp://'+ftp_server+direction+gtf_f
+    else:
+        raise ValueError('No fit ' + ftype +' file in ftp://'+ftp_server+direction)
 
 
 # Cell

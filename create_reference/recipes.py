@@ -14,7 +14,7 @@ def recipe(workflow,species_paras,args):
             func=task_get_file,
             params=dict(
                 link=para['link_genome_fasta'],
-                filename=para['local_genome_fasta_gz'],
+                filename=para['local_files']['local_genome_fasta_gz'],
             ),
             uid='get_fasta_%s_%s' % (para['species'],para['version']) ,
             stage_name='get_fasta'
@@ -24,7 +24,7 @@ def recipe(workflow,species_paras,args):
         workflow.add_task(
             func=task_gunzip,
             params=dict(
-                gzipfile=para['local_genome_fasta_gz']
+                gzipfile=para['local_files']['local_genome_fasta_gz']
             ),
             uid='gunzip_fasta_%s_%s' % (para['species'],para['version']) ,
             parents=get_fasta[i],
@@ -36,47 +36,50 @@ def recipe(workflow,species_paras,args):
             func=task_get_file,
             params=dict(
                 link=para['link_transcriptome_gtf'],
-                filename=para['local_transcriptome_gtf_gz'],
+                filename=para['local_files']['local_transcriptome_gtf_gz'],
             ),
             uid='get_gtf_%s_%s' % (para['species'],para['version']) ,
             stage_name='get_gtf'
         ) for para in species_paras]
 
-    get_bwa_idx = [
-        workflow.add_task(
-            func=task_bwa_build_index,
-            params=dict(
-                software=args.bwa,
-                reference=para['local_genome_fasta'],
-            ),
-            uid='get_bwa_index_%s_%s' % (para['species'],para['version']) ,
-            parents=gunzip_fasta[i],
-            stage_name='get_bwa_index'
-        ) for i,para in enumerate(species_paras)]
+    if 'bwa' in args.indexs:
+        get_bwa_idx = [
+            workflow.add_task(
+                func=task_bwa_build_index,
+                params=dict(
+                    software=args.bwa,
+                    reference=para['local_files']['local_genome_fasta'],
+                ),
+                uid='get_bwa_index_%s_%s' % (para['species'],para['version']) ,
+                parents=gunzip_fasta[i],
+                stage_name='get_bwa_index'
+            ) for i,para in enumerate(species_paras)]
 
-    get_bowtie_idx = [
-        workflow.add_task(
-            func=task_bowtie_build_index,
-            params=dict(
-                software=args.bowtie,
-                reference=para['local_genome_fasta'],
-                prefix=para['bowtie_idx']
-            ),
-            uid='get_bowtie_index_%s_%s' % (para['species'],para['version']) ,
-            parents=gunzip_fasta[i],
-            stage_name='get_bowtie_index'
-        ) for i,para in enumerate(species_paras)]
+    if 'bowtie' in args.indexs:
+        get_bowtie_idx = [
+            workflow.add_task(
+                func=task_bowtie_build_index,
+                params=dict(
+                    software=args.bowtie,
+                    reference=para['local_files']['local_genome_fasta'],
+                    prefix=para['local_files']['bowtie_idx']
+                ),
+                uid='get_bowtie_index_%s_%s' % (para['species'],para['version']) ,
+                parents=gunzip_fasta[i],
+                stage_name='get_bowtie_index'
+            ) for i,para in enumerate(species_paras)]
 
-    get_bowtie2_idx = [
-        workflow.add_task(
-            func=task_bowtie2_build_index,
-            params=dict(
-                software=args.bwa,
-                reference=para['local_genome_fasta'],
-                prefix=para['bowtie2_idx']
-            ),
-            uid='get_bowtie2_index_%s_%s' % (para['species'],para['version']) ,
-            parents=gunzip_fasta[i],
-            stage_name='get_bowtie2_index'
-        ) for i,para in enumerate(species_paras)]
+    if 'bowtie2' in args.indexs:
+        get_bowtie2_idx = [
+            workflow.add_task(
+                func=task_bowtie2_build_index,
+                params=dict(
+                    software=args.bwa,
+                    reference=para['local_files']['local_genome_fasta'],
+                    prefix=para['local_files']['bowtie2_idx']
+                ),
+                uid='get_bowtie2_index_%s_%s' % (para['species'],para['version']) ,
+                parents=gunzip_fasta[i],
+                stage_name='get_bowtie2_index'
+            ) for i,para in enumerate(species_paras)]
 

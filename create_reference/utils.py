@@ -35,6 +35,10 @@ def get_args():
                             help='bowtie execute path')
     conf_parser.add_argument('--bowtie2',default='bowtie2',type=str,
                             help='bowtie2 execute path')
+    conf_parser.add_argument('--hisat2',default='hisat2',type=str,
+                            help='hisat2 execute path')
+    conf_parser.add_argument('--picard',default='picard',type=str,
+                            help='picard execute path, hint: this picard was install by conda')
     return parser.parse_args()
 
 
@@ -103,10 +107,15 @@ def get_local_files(outdir,species,version):
     local_genome_fasta='{sample_outdir}/genome.fa'.format(sample_outdir=sample_outdir)
     local_transcriptome_gtf = '{sample_outdir}/transcriptome.gtf'.format(sample_outdir=sample_outdir)
     bwa_idx = local_genome_fasta,
+    samtools_idx = local_genome_fasta+'.fai'
+    picard_idx = local_genome_fasta.replace('.fa','.dict')
+    local_genome_fasta_gz = local_genome_fasta+'.gz'
+    local_transcriptome_gtf_gz = local_transcriptome_gtf+'.gz'
     bowtie_idx = '{sample_outdir}/bowtie_idx/genome'.format(sample_outdir=sample_outdir)
     bowtie2_idx = '{sample_outdir}/bowtie2_idx/genome'.format(sample_outdir=sample_outdir)
+    hisat2_idx = '{sample_outdir}/hisat2_idx/genome'.format(sample_outdir=sample_outdir)
     os.makedirs(sample_outdir,exist_ok=True)
-    return local_genome_fasta,local_transcriptome_gtf, bwa_idx,bowtie_idx,bowtie2_idx
+    return locals()
 
 # Cell
 
@@ -130,12 +139,10 @@ def get_paras(args,ftp,ftp_server):
                                                                 None,
                                                                 get_gfp(sp,
                                                                         args.reference_version))
-        para['local_genome_fasta'],para['local_transcriptome_gtf'],para['bwa_idx'],para['bowtie_idx'],para['bowtie2_idx']= get_local_files(
+        para['local_files']= get_local_files(
             args.outdir,
             sp,
             args.reference_version)
-        para['local_genome_fasta_gz'] = para['local_genome_fasta']+'.gz'
-        para['local_transcriptome_gtf_gz'] = para['local_transcriptome_gtf'] + '.gz'
         paras.append(para)
 
     return paras

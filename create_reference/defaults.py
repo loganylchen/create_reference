@@ -62,7 +62,7 @@ species=['homo_sapiens',
 
 
 # Cell
-softwares=['bwa','hisat2','samtools','star','picard']
+softwares=['bwa','bowtie','bowtie2','hisat2','samtools','picard']
 
 # Cell
 

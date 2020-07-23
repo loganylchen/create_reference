@@ -86,6 +86,15 @@ def recipe(workflow,species_paras,args):
     if 'hisat2' in args.indexs:
         get_hisat2_idx = [
             workflow.add_task(
-                func=task_
-            )
-        ]
+                func=task_hisat2_build_index,
+                params=dict(
+                    software=args.hisat2,
+                    reference=para['local_files']['local_genome_fasta'],
+                    prefix=para['local_files']['hisat2_idx'],
+                    snp='',
+                    gtf=para['local_files']['local_transcriptome_gtf']
+                ),
+                uid='get_hisat2_index_%s_%s' % (para['species'],para['version']) ,
+                parents=[gunzip_fasta[i],get_gtf[i]],
+                stage_name='get_hisat2_index'
+            ) for i,para in enumerate(species_paras)]

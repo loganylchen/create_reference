@@ -114,6 +114,9 @@ def get_local_files(outdir,species,version):
     bowtie_idx = '{sample_outdir}/bowtie_idx/genome'.format(sample_outdir=sample_outdir)
     bowtie2_idx = '{sample_outdir}/bowtie2_idx/genome'.format(sample_outdir=sample_outdir)
     hisat2_idx = '{sample_outdir}/hisat2_idx/genome'.format(sample_outdir=sample_outdir)
+    rrna_bed = '{sample_outdir}/rRNA.bed'.format(sample_outdir=sample_outdir)
+    rrna_intervals = '{sample_outdir}/rRNA.interval_list'.format(sample_outdir=sample_outdir)
+    tmp = '{sample_outdir}/tmp'.format(sample_outdir=sample_outdir)
     os.makedirs(sample_outdir,exist_ok=True)
     return locals()
 

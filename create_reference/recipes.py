@@ -53,6 +53,52 @@ def recipe(workflow,species_paras,args):
             stage_name='gunzip_gtf'
         ) for i,para in enumerate(species_paras)]
 
+    get_rRNA_bed = [
+        workflow.add_task(
+            func=task_extract_rRNA_bed,
+            params=dict(
+                gtf=para['local_files']['local_transcriptome_gtf'],
+                bed=para['local_files']['rrna_bed']
+            ),
+            uid='get_rRNA_bed_%s_%s' % (para['species'],para['version']) ,
+            parents=gunzip_gtf[i],
+            stage_name='get_rRNA_bed'
+        ) for i,para in enumerate(species_paras)]
+
+
+
+    if 'picard' in args.indexs:
+        get_picard_idx = [
+            workflow.add_task(
+                func=task_picard_build_index,
+                params=dict(
+                    software=args.picard,
+                    reference=para['local_files']['local_genome_fasta'],
+                    reference_dict=para['local_files']['picard_idx'],
+                    tmp=para['local_files']['tmp']
+                ),
+                uid='get_picard_idx_%s_%s' % (para['species'],para['version']) ,
+                parents=gunzip_fasta[i],
+                stage_name='get_picard_idx'
+            ) for i,para in enumerate(species_paras) ]
+
+        get_rRNA_intervals = [
+            workflow.add_task(
+                func=task_build_rRNA_intervals,
+                params=dict(
+                    software=args.picard,
+                    bed=para['local_files']['rrna_bed'],
+                    intervals=para['local_files']['rrna_intervals'],
+                    reference_dict=para['local_files']['picard_idx'],
+                    tmp=para['local_files']['tmp']
+                ),
+                uid='get_rRNA_intervals_%s_%s' % (para['species'],para['version']) ,
+                parents=[get_picard_idx[i],get_rRNA_bed[i]],
+                stage_name='get_rRNA_intervals'
+            ) for i,para in enumerate(species_paras) ]
+
+
+
     if 'bwa' in args.indexs:
         get_bwa_idx = [
             workflow.add_task(

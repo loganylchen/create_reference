@@ -83,3 +83,9 @@ def recipe(workflow,species_paras,args):
                 stage_name='get_bowtie2_index'
             ) for i,para in enumerate(species_paras)]
 
+    if 'hisat2' in args.indexs:
+        get_hisat2_idx = [
+            workflow.add_task(
+                func=task_
+            )
+        ]

@@ -31,6 +31,8 @@ def get_args():
     conf_parser=parser.add_argument_group('Config parameters')
     conf_parser.add_argument('--bwa',default='bwa',type=str,
                             help='bwa execute path')
+    conf_parser.add_argument('--samtools',default='samtools',type=str,
+                            help='samtools execute path')
     conf_parser.add_argument('--bowtie',default='bowtie',type=str,
                             help='bowtie execute path')
     conf_parser.add_argument('--bowtie2',default='bowtie2',type=str,

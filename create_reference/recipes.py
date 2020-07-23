@@ -66,6 +66,19 @@ def recipe(workflow,species_paras,args):
                 stage_name='get_bwa_index'
             ) for i,para in enumerate(species_paras)]
 
+    if 'samtools' in args.indexs:
+        get_bwa_idx = [
+            workflow.add_task(
+                func=task_samtools_build_index,
+                params=dict(
+                    software=args.samtools,
+                    reference=para['local_files']['local_genome_fasta'],
+                ),
+                uid='get_samtools_index_%s_%s' % (para['species'],para['version']) ,
+                parents=gunzip_fasta[i],
+                stage_name='get_samtools_index'
+            ) for i,para in enumerate(species_paras)]
+
     if 'bowtie' in args.indexs:
         get_bowtie_idx = [
             workflow.add_task(

@@ -42,6 +42,17 @@ def recipe(workflow,species_paras,args):
             stage_name='get_gtf'
         ) for para in species_paras]
 
+    gunzip_gtf = [
+        workflow.add_task(
+            func=task_gunzip,
+            params=dict(
+                gzipfile=para['local_files']['local_transcriptome_gtf_gz']
+            ),
+            uid='gunzip_fasta_%s_%s' % (para['species'],para['version']) ,
+            parents=get_gtf[i],
+            stage_name='gunzip_gtf'
+        ) for i,para in enumerate(species_paras)]
+
     if 'bwa' in args.indexs:
         get_bwa_idx = [
             workflow.add_task(
@@ -95,6 +106,6 @@ def recipe(workflow,species_paras,args):
                     gtf=para['local_files']['local_transcriptome_gtf']
                 ),
                 uid='get_hisat2_index_%s_%s' % (para['species'],para['version']) ,
-                parents=[gunzip_fasta[i],get_gtf[i]],
+                parents=[gunzip_fasta[i],gunzip_gtf[i]],
                 stage_name='get_hisat2_index'
             ) for i,para in enumerate(species_paras)]

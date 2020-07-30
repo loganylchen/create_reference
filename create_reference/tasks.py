@@ -104,7 +104,7 @@ def task_extract_rRNA_bed(gtf,bed):
     cmds = [
         cmd_mkdir(os.path.dirname(bed)),
     ]
-    gtf2bed = '''awk -F '\t' '{print $1"\t"$4"\t"$5}' ''' + gtf + '>' + bed
+    gtf2bed = '''awk -F '\t' '{if(/gene_biotype "rRNA"/ && $3=="transcript"){print $1"\t"$4"\t"$5}}' ''' + gtf + '>' + bed
     cmds.append(gtf2bed)
     return '\n'.join(cmds)
 

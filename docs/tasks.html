@@ -368,7 +368,7 @@ bowtie2-build    genome.fasta /tmp/bowtie2_index
 <pre>mkdir -p /tmp
 awk &#39;BEGIN{OFS=&#34;\t&#34;} {if($2 ~ /^chr/) {$2 = substr($2, 4)}; if($2 == &#34;M&#34;) {$2 = &#34;MT&#34;} print}&#39; xxxx.snp \
     &gt; /tmp/hisat2_prefix_snp.tmp
-hisat2_extract_snps_haplotypes_UCSC.py genome.fasta xxxx.snp /tmp/hisat2_prefix
+hisat2_extract_snps_haplotypes_UCSC.py genome.fasta /tmp/hisat2_prefix_snp.tmp /tmp/hisat2_prefix
 hisat2_extract_splice_sites.py xxx.gtf &gt; /tmp/hisat2_prefix.ss
 hisat2_extract_exons.py xxx.gtf &gt; /tmp/hisat2_prefix.exon
 hisat2-build -p  16  genome.fasta  --ss /tmp/hisat2_prefix.ss --exon /tmp/hisat2_prefix.exon --haplotype /tmp/hisat2_prefix.haplotype --genome_snp /tmp/hisat2_prefix.snp /tmp/hisat2_prefix
@@ -379,7 +379,7 @@ hisat2-build -p  16  genome.fasta  --ss /tmp/hisat2_prefix.ss --exon /tmp/hisat2
 mkdir -p /tmp
 awk &#39;BEGIN{OFS=&#34;\t&#34;} {if($2 ~ /^chr/) {$2 = substr($2, 4)}; if($2 == &#34;M&#34;) {$2 = &#34;MT&#34;} print}&#39; xxxx.snp \
     &gt; /tmp/hisat2_prefix_snp.tmp
-hisat2_extract_snps_haplotypes_UCSC.py genome.fasta xxxx.snp /tmp/hisat2_prefix
+hisat2_extract_snps_haplotypes_UCSC.py genome.fasta /tmp/hisat2_prefix_snp.tmp /tmp/hisat2_prefix
 hisat2-build -p  16  genome.fasta  --haplotype /tmp/hisat2_prefix.haplotype --genome_snp /tmp/hisat2_prefix.snp /tmp/hisat2_prefix
 </pre>
 </div>
@@ -467,6 +467,38 @@ wget -c ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens/dna/Homo_sapiens
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>echo No need to make dirs
 wget -c ftp://ftp.ensembl.org/pub/release-99/fasta/sus_scrofa/dna/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa.gz -O genome.fasta.gz
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">task_extract_rRNA_bed</span><span class="p">(</span><span class="s1">&#39; /expt/logan/database//homo_sapiens/100/transcriptome.gtf&#39;</span><span class="p">,</span><span class="s1">&#39;/expt/logan/database//homo_sapiens/100/rRNA.bed&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>mkdir -p /expt/logan/database//homo_sapiens/100
+awk -F &#39;	&#39; &#39;{if(/gene_biotype &#34;rRNA&#34;/ &amp;&amp; $3==&#34;transcript&#34;){print $1&#34;	&#34;$4&#34;	&#34;$5}}&#39;  /expt/logan/database//homo_sapiens/100/transcriptome.gtf&gt;/expt/logan/database//homo_sapiens/100/rRNA.bed
 </pre>
 </div>
 </div>

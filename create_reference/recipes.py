@@ -182,5 +182,5 @@ def recipe(workflow,species_paras,args):
                 ),
                 uid='get_star_index_%s_%s_%s' % (para['species'],para['version'],str(read_length)) ,
                 parents=[gunzip_fasta[i],gunzip_gtf[i]],
-                stage_name='get_hisat2_index'
+                stage_name='get_star_index'
             ) for i,para in enumerate(species_paras) for read_length in para['read_length']]

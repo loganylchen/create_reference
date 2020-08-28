@@ -28,6 +28,8 @@ def get_args():
                        help='Reference and indexes generated direction')
     ana_parser.add_argument('--thread','-t',default=4,type=int,
                        help='Thread number')
+    ana_parser.add_argument('--read-length','-rl',nargs='+',type=int,default=[50,100,150],
+                           help='STAR build index for different read length')
     conf_parser=parser.add_argument_group('Config parameters')
     conf_parser.add_argument('--bwa',default='bwa',type=str,
                             help='bwa execute path')
@@ -41,6 +43,8 @@ def get_args():
                             help='hisat2 execute path')
     conf_parser.add_argument('--picard',default='picard',type=str,
                             help='picard execute path, hint: this picard was install by conda')
+    conf_parser.add_argument('--star',default='STAR',type=str,
+                            help='STAR execute path')
     return parser.parse_args()
 
 
@@ -116,6 +120,7 @@ def get_local_files(outdir,species,version):
     bowtie_idx = '{sample_outdir}/bowtie_idx/genome'.format(sample_outdir=sample_outdir)
     bowtie2_idx = '{sample_outdir}/bowtie2_idx/genome'.format(sample_outdir=sample_outdir)
     hisat2_idx = '{sample_outdir}/hisat2_idx/genome'.format(sample_outdir=sample_outdir)
+    star_idx_prefix= '{sample_outdir}/STAR_idx'.format(sample_outdir=sample_outdir)
     rrna_bed = '{sample_outdir}/rRNA.bed'.format(sample_outdir=sample_outdir)
     rrna_intervals = '{sample_outdir}/rRNA.interval_list'.format(sample_outdir=sample_outdir)
     tmp = '{sample_outdir}/tmp'.format(sample_outdir=sample_outdir)
@@ -130,6 +135,7 @@ def get_paras(args,ftp,ftp_server):
         para={}
         para['species']=sp
         para['version']=args.reference_version
+        para['read_length'] = args.read_length
         para['link_genome_fasta']=get_likely_file_from_ftp(ftp,
                                                            ftp_server,
                                                            args.reference_version,
@@ -148,6 +154,7 @@ def get_paras(args,ftp,ftp_server):
             args.outdir,
             sp,
             args.reference_version)
+
         paras.append(para)
 
     return paras

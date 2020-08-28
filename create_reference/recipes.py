@@ -168,3 +168,19 @@ def recipe(workflow,species_paras,args):
                 parents=[gunzip_fasta[i],gunzip_gtf[i]],
                 stage_name='get_hisat2_index'
             ) for i,para in enumerate(species_paras)]
+
+    if 'star' in args.indexs:
+        get_star_idx = [
+            workflow.add_task(
+                func=task_star_build_index,
+                params=dict(
+                    software=args.star,
+                    reference=para['local_files']['local_genome_fasta'],
+                    prefix=para['local_files']['star_idx_prefix']+'_'+str(read_length),
+                    gtf=para['local_files']['local_transcriptome_gtf'],
+                    read_length=read_length
+                ),
+                uid='get_star_index_%s_%s' % (para['species'],para['version']) ,
+                parents=[gunzip_fasta[i],gunzip_gtf[i]],
+                stage_name='get_hisat2_index'
+            ) for read_length in para['read_length'] for i,para in enumerate(species_paras)]
